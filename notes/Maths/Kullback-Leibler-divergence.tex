@@ -1,0 +1,40 @@
+% !TXS template
+\documentclass[french]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage{babel}
+\usepackage{amsmath}
+
+\title{Divergence de Kullback-Leibler}
+\author{BONIN Alexandre}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Définition}
+
+Soit $p(x)$ une certaine fonction de distribution. Soit $q(x)$ une approximation de cette distribution (un certain modèle de $p$). La divergence de Kullback-Leibler entre ces deux distributions est définie par :
+
+\begin{align}
+\text{KL}(p || q) \quad &= \quad - \int p(x) \ln q(x) dx - \left(- \int p(x) \ln p(x) dx \right) \nonumber\\
+&= \quad \quad \int p(x) \ln \left\{ \frac{p(x)}{q(x)} \right\} dx \nonumber \\
+&= \quad - \int p(x) \ln \left\{ \frac{q(x)}{p(x)} \right\} dx \label{eq:KL}
+\end{align}
+
+La divergence de KL n'est pas symétrique ( i.e. $ \text{KL}(p||q) \not\equiv \text{KL}(q||p) $ ). De plus on a les propriétés suivantes :
+
+\begin{align}
+\text{KL}(p||q) &\geq 0 \label{eq:KLpos} \\
+\text{KL}(p||q) &= 0 \quad \text{ssi.} \quad p(x) = q(x) \label{eq:KLeq}
+\end{align}
+
+\textit{Les divergences de KL sont toujours positives (\ref{eq:KLpos}), et seules deux mêmes distributions peuvent avoir une divergence nulle (\ref{eq:KLeq}).}
+
+La divergence de Kullback-Leibler n'est pas une distance au sens de la métrique, car elle n'a pas la propriété de symétrie, et ne respecte pas l'inégalité triangulaire. Cependant elle présente un intérêt de métrique d'optimisation dans des problèmes tels que l'estimation de fonction de densité ou de compression de données.
+
+\end{document}
